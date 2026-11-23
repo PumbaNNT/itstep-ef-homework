@@ -1,0 +1,43 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Каталог товарів";
+}
+
+<div class="text-center mb-4">
+    <h1 class="fw-bold">Каталог товарів</h1>
+    <p class="text-muted">@Model.Sum(c => c.Products.Count) товарів у @Model.Count категоріях</p>
+</div>
+
+<nav class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+    @foreach (var c in Model)
+    {
+        <a class="btn btn-outline-primary btn-sm rounded-pill" href="#cat-@c.Id">@c.Name</a>
+    }
+</nav>
+
+@foreach (var category in Model)
+{
+    <section id="cat-@category.Id" class="mb-5">
+        <h2 class="h4 border-bottom pb-2 mb-3">@category.Name</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+            @foreach (var p in category.Products.OrderBy(p => p.Id))
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm product-card">
+                        <img src="@p.Image" class="card-img-top" alt="@p.Name" loading="lazy" />
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h6">@p.Name</h3>
+                            <p class="card-text small text-muted flex-grow-1">@p.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-success">@p.Price.ToString("N0") ₴</span>
+                                <span class="badge @(p.Amount > 10 ? "bg-success" : "bg-warning text-dark")">
+                                    @(p.Amount > 0 ? $"В наявності: {p.Amount}" : "Немає")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}

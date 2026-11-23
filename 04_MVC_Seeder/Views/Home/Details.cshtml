@@ -1,0 +1,33 @@
+@model Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Каталог</a></li>
+        <li class="breadcrumb-item">@Model.Category?.Name</li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+    </ol>
+</nav>
+
+<div class="row g-4 align-items-start">
+    <div class="col-md-6">
+        <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow" />
+    </div>
+    <div class="col-md-6">
+        <span class="badge bg-primary mb-2">@Model.Category?.Name</span>
+        <h1 class="fw-bold">@Model.Name</h1>
+        <p class="display-6 text-success fw-semibold">@Model.Price.ToString("N0") ₴</p>
+        <p class="lead">@Model.Description</p>
+
+        <table class="table table-sm w-auto">
+            <tr><th>Артикул</th><td>#@Model.Id</td></tr>
+            <tr><th>Категорія</th><td>@Model.Category?.Name</td></tr>
+            <tr><th>В наявності</th><td>@Model.Amount шт.</td></tr>
+        </table>
+
+        <button class="btn btn-success btn-lg" type="button">Купити</button>
+        <a class="btn btn-outline-secondary btn-lg" asp-action="Index">До каталогу</a>
+    </div>
+</div>
