@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2 - Стаття із зображеннями (адаптивна)</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 35px 47px;
+            background: #f4f4f4;
+            color: #222;
+            font-family: Segoe UI, Arial, sans-serif;
+            font-size: 19px;
+            line-height: 1.45;
+        }
+
+        /* > 800 px: стаття ліворуч, зображення праворуч */
+        .page {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            grid-template-areas:
+                "intro   images"
+                "rest    images";
+            gap: 0 50px;
+            align-items: start;
+        }
+
+        .intro  { grid-area: intro; }
+        .rest   { grid-area: rest; }
+        .images { grid-area: images; display: flex; flex-direction: column; gap: 25px; }
+
+        h1 { margin: 0 0 20px; font-size: 30px; }
+        p  { margin: 0 0 25px; }
+
+        figure {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #37536d;
+        }
+
+        figure img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+        }
+
+        figcaption {
+            padding: 12px 25px;
+            color: #fff;
+            text-align: right;
+        }
+
+        /* 600 - 800 px: зображення в ряд між вступом і рештою тексту */
+        @media (max-width: 800px) {
+            body { padding: 35px; font-size: 18px; }
+
+            .page {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "intro"
+                    "images"
+                    "rest";
+            }
+
+            .images {
+                flex-direction: row;
+                align-items: flex-start;
+                margin: 20px 0 45px;
+            }
+
+            .images figure { flex: 1; }
+        }
+
+        /* < 600 px: усе в одну колонку, зображення одне під одним */
+        @media (max-width: 599px) {
+            body { padding: 20px; font-size: 16px; }
+            h1 { font-size: 26px; }
+
+            .images {
+                flex-direction: column;
+                margin: 10px 0 30px;
+            }
+
+            figcaption { padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="intro">
+            <h1>Cat</h1>
+            <p>The domestic cat is a small carnivorous mammal and the only domesticated member of the cat family.
+               Some cats live in homes as pets, while others are feral and keep away from people. Cats have lived
+               alongside humans for thousands of years, valued as companions and as hunters of mice and rats.
+               Dozens of breeds are recognised today by cat associations.</p>
+        </div>
+
+        <div class="images">
+            <figure>
+                <img src="https://placecats.com/600/400" alt="Кіт на снігу">
+                <figcaption>A tabby cat in snowy weather</figcaption>
+            </figure>
+            <figure>
+                <img src="https://placecats.com/601/400" alt="Кіт крупним планом">
+                <figcaption>Tiny hooks on a cat's tongue work like a comb for its fur.</figcaption>
+            </figure>
+        </div>
+
+        <div class="rest">
+            <p>Cats share their basic anatomy with other felines: a flexible body, quick reflexes, sharp teeth and
+               claws that can be pulled in. They are most active at dawn and dusk. Their hearing picks up sounds
+               that are too quiet or too high for people, and they see much better in low light, although their
+               colour vision is weaker than ours.</p>
+            <p>Although they hunt alone, cats are social animals. They communicate with many sounds - meowing,
+               purring, trilling, hissing and growling - as well as with body language and scent marks. Kittens are
+               usually born between spring and autumn, often two to five in a litter.</p>
+        </div>
+    </div>
+</body>
+</html>

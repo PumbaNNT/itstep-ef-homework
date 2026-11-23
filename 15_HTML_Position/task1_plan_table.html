@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1 - Вибір плану підписки (таблиця)</title>
+    <style>
+        /* Без власних класів - тільки теги та псевдокласи first-child / last-child / nth-child */
+        body {
+            margin: 0;
+            padding: 35px;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+            font-size: 19px;
+        }
+
+        table {
+            width: 1165px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        td, th { height: 63px; padding: 0; }
+
+        /* шапка */
+        thead th {
+            height: 205px;
+            color: #fff;
+            font-size: 24px;
+            vertical-align: top;
+            padding-top: 22px;
+        }
+
+        thead th:first-child {
+            width: 325px;
+            vertical-align: middle;
+            padding-top: 0;
+            background: #7886aa;
+        }
+
+        thead th:nth-child(2) { background: #4c5f8b; }
+        thead th:nth-child(3) { background: #2e3f70; }
+        thead th:nth-child(4) { background: #182853; }
+        thead th:last-child   { background: #08143a; }
+
+        thead th span:first-child  { display: block; margin-bottom: 30px; }
+        thead th span:nth-child(2) { display: block; font-size: 50px; line-height: 1; }
+        thead th span:last-child   { display: block; }
+
+        /* рядки-зебра і перший стовпець */
+        tbody td:first-child { text-align: left; padding-left: 38px; }
+        tbody tr:nth-child(odd) td  { background: #e6e6e6; }
+        tbody tr:nth-child(even) td { background: #f3f3f3; }
+        tbody tr td:nth-child(even) { filter: brightness(.96); }
+
+        /* останній рядок з кнопками */
+        tbody tr:last-child td { background: #dcdcdc; height: 83px; }
+
+        button {
+            width: 130px;
+            height: 48px;
+            border: 1px solid #999;
+            background: #d4d4d4;
+            color: #666;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #c4c4c4; }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Choose your plan</th>
+                <th><span>starter</span><span>$10</span><span>per mont</span></th>
+                <th><span>econom</span><span>$30</span><span>per mont</span></th>
+                <th><span>standart</span><span>$59</span><span>per mont</span></th>
+                <th><span>professional</span><span>$99</span><span>per mont</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Amount of space</td><td>20GB</td><td>40GB</td><td>110GB</td><td>Unlimeted</td></tr>
+            <tr><td>Bandwidth per month</td><td>120GB</td><td>240GB</td><td>610GB</td><td>1300GB</td></tr>
+            <tr><td>Email accounts</td><td>1</td><td>15</td><td>60</td><td>Unlimeted</td></tr>
+            <tr><td>MySQL databases</td><td>1</td><td>15</td><td>60</td><td>Unlimeted</td></tr>
+            <tr><td>25h support</td><td>No</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+            <tr><td>Support tickets per month</td><td>2</td><td>6</td><td>14</td><td>20</td></tr>
+            <tr><td></td><td><button>START</button></td><td><button>START</button></td><td><button>START</button></td><td><button>START</button></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

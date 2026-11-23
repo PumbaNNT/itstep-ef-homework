@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1 - Таблиця з закріпленими заголовками</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 35px;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td, th {
+            min-width: 138px;
+            height: 51px;
+            padding: 0 10px;
+        }
+
+        /* заголовок таблиці прибивається до верху сторінки */
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #add8e6;
+        }
+
+        /* перший стовпець прибивається до лівого краю */
+        tbody th:first-child {
+            position: sticky;
+            left: 0;
+            background: #add8e6;
+        }
+
+        /* лівий верхній кут - над усім */
+        thead th:first-child {
+            left: 0;
+            z-index: 2;
+        }
+
+        /* зебра - тільки псевдокласи, без власних класів */
+        tbody tr:nth-child(odd) td  { background: #f4f4f4; }
+        tbody tr:nth-child(even) td { background: #e8e8e8; }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Header 1</th><th>Header 2</th><th>Header 3</th><th>Header 4</th><th>Header 5</th>
+                <th>Header 6</th><th>Header 7</th><th>Header 8</th><th>Header 9</th><th>Header 10</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>Line 1</th><td>23</td><td>123</td><td>43</td><td>12</td><td>76</td><td>23</td><td>123</td><td>43</td><td>12</td><td>76</td></tr>
+            <tr><th>Line 2</th><td>23</td><td>123</td><td>43</td><td>12</td><td>76</td><td>23</td><td>123</td><td>43</td><td>12</td><td>76</td></tr>
+            <tr><th>Line 3</th><td>34</td><td>63</td><td>25</td><td>7</td><td>23</td><td>34</td><td>63</td><td>25</td><td>7</td><td>23</td></tr>
+            <tr><th>Line 4</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 5</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 6</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 7</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 8</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 9</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 10</th><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td><td>23</td></tr>
+            <tr><th>Line 11</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 12</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 13</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 14</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 15</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 16</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 17</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 18</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 19</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+            <tr><th>Line 20</th><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td><td>12</td><td>45</td><td>67</td><td>8</td><td>90</td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1 - Годинник</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+        }
+
+        .clock {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 10px solid #333;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+        }
+
+        /* поділки годин */
+        .mark {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 50%;
+            margin-left: -2px;
+            transform-origin: bottom center;
+        }
+
+        .mark::before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 18px;
+            background: #333;
+        }
+
+        .mark:nth-child(1)  { transform: rotate(0deg); }
+        .mark:nth-child(2)  { transform: rotate(30deg); }
+        .mark:nth-child(3)  { transform: rotate(60deg); }
+        .mark:nth-child(4)  { transform: rotate(90deg); }
+        .mark:nth-child(5)  { transform: rotate(120deg); }
+        .mark:nth-child(6)  { transform: rotate(150deg); }
+        .mark:nth-child(7)  { transform: rotate(180deg); }
+        .mark:nth-child(8)  { transform: rotate(210deg); }
+        .mark:nth-child(9)  { transform: rotate(240deg); }
+        .mark:nth-child(10) { transform: rotate(270deg); }
+        .mark:nth-child(11) { transform: rotate(300deg); }
+        .mark:nth-child(12) { transform: rotate(330deg); }
+
+        /* стрілки обертаються навколо нижнього краю (центр годинника) */
+        .hand {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform-origin: bottom center;
+            border-radius: 4px;
+            animation-name: rotate;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* годинникова - повільно (1 оберт за 60 с) */
+        .hour {
+            width: 10px;
+            height: 80px;
+            margin-left: -5px;
+            background: #333;
+            animation-duration: 60s;
+        }
+
+        /* хвилинна - швидше (1 оберт за 5 с) */
+        .minute {
+            width: 6px;
+            height: 120px;
+            margin-left: -3px;
+            background: #c0392b;
+            animation-duration: 5s;
+        }
+
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="mark"></div><div class="mark"></div><div class="mark"></div>
+        <div class="mark"></div><div class="mark"></div><div class="mark"></div>
+        <div class="mark"></div><div class="mark"></div><div class="mark"></div>
+        <div class="mark"></div><div class="mark"></div><div class="mark"></div>
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="center"></div>
+    </div>
+</body>
+</html>

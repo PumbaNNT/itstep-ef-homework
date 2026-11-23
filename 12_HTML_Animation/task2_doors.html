@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2 - Стулки</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+        }
+
+        .box {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+            background: #fff;
+        }
+
+        /* прихований текст */
+        .text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .text h2 { margin: 0 0 10px; color: #2c3e50; }
+        .text p  { margin: 0; color: #555; line-height: 1.5; }
+
+        /* дві однакові стулки */
+        .door {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #2980b9, #6dd5fa);
+            /* повернення у початковий стан - одразу */
+            transition: transform 0s;
+        }
+
+        .door.left  { left: 0;  border-right: 2px solid rgba(255, 255, 255, .6); }
+        .door.right { right: 0; border-left: 2px solid rgba(255, 255, 255, .6); }
+
+        /* при наведенні - повільно (2 с) розкриваються */
+        .box:hover .door        { transition: transform 2s ease; }
+        .box:hover .door.left   { transform: translateX(-100%); }
+        .box:hover .door.right  { transform: translateX(100%); }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="text">
+            <h2>Секретний текст</h2>
+            <p>Цей текст був прихований за стулками. Наведіть мишку на блок, і стулки повільно
+               розкриються за 2 секунди. Приберіть мишку - і вони одразу закриються.</p>
+        </div>
+        <div class="door left"></div>
+        <div class="door right"></div>
+    </div>
+</body>
+</html>

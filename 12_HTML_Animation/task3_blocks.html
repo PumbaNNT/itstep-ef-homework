@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3 - Блоки текст + зображення</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+        }
+
+        .block {
+            position: relative;
+            display: flex;
+            max-width: 900px;
+            height: 220px;              /* фіксована висота */
+            margin: 0 auto 30px;
+            background: #fff;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* текст і зображення ділять ширину порівну */
+        .text,
+        .image {
+            flex: 1 1 50%;
+        }
+
+        /* текст посередині своєї частини */
+        .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            font-size: 22px;
+            color: #333;
+        }
+
+        /* зображення не виходить за межі своєї частини */
+        .image {
+            overflow: hidden;
+        }
+
+        .image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;          /* займає всю частину по ширині і висоті */
+            transition: transform 1s ease;
+        }
+
+        /* напівпрозора чорна плашка на весь блок */
+        .block::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .5);
+            opacity: 0;
+            transition: opacity .3s ease;
+            pointer-events: none;
+        }
+
+        .block:hover::after   { opacity: 1; }
+        .block:hover .image img { transform: scale(1.2); }
+    </style>
+</head>
+<body>
+    <div class="block">
+        <div class="text">Гори</div>
+        <div class="image"><img src="https://picsum.photos/id/1018/600/400" alt="Гори"></div>
+    </div>
+
+    <div class="block">
+        <div class="text">Море</div>
+        <div class="image"><img src="https://picsum.photos/id/1015/600/400" alt="Річка"></div>
+    </div>
+
+    <div class="block">
+        <div class="text">Ліс</div>
+        <div class="image"><img src="https://picsum.photos/id/1039/600/400" alt="Ліс"></div>
+    </div>
+</body>
+</html>

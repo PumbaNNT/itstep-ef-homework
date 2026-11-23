@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3 - План підписки (блоки)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 48px;
+            background: #f4f4f4;
+            font-family: Segoe UI, Arial, sans-serif;
+        }
+
+        .plans {
+            display: flex;
+            gap: 25px;
+        }
+
+        /* обгортка має фіксований розмір, тому сусідні блоки не рухаються */
+        .plan-wrap {
+            position: relative;
+            width: 250px;
+            height: 424px;
+        }
+
+        .plan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            text-align: center;
+            /* плавне збільшення за 1 секунду */
+            transition: top 1s, left 1s, width 1s, height 1s;
+        }
+
+        /* збільшення в ширину і висоту поверх сусідів */
+        .plan-wrap:hover .plan {
+            z-index: 1;
+            top: -25px;
+            left: -25px;
+            width: calc(100% + 50px);
+            height: calc(100% + 50px);
+        }
+
+        .plan h2 {
+            margin: 0;
+            padding: 28px 0 18px;
+            border-bottom: 4px solid var(--color);
+            font-size: 19px;
+        }
+
+        .price {
+            margin: 20px 0 0;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .per {
+            margin: 0 0 25px;
+            color: #ccc;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .plan ul {
+            margin: 0 0 35px;
+            padding: 0;
+            list-style: none;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 33px;
+        }
+
+        .plan button {
+            width: 110px;
+            height: 45px;
+            border: 0;
+            border-radius: 5px;
+            background: var(--color);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .enterprise   { --color: #c8385a; }
+        .professional { --color: #d8913b; }
+        .standart     { --color: #2a6688; }
+        .basic        { --color: #64bb35; }
+    </style>
+</head>
+<body>
+    <div class="plans">
+        <div class="plan-wrap">
+            <div class="plan enterprise">
+                <h2>ENTERPRISE</h2>
+                <p class="price">$69</p>
+                <p class="per">per month</p>
+                <ul><li>10GB disk space</li><li>100GB monthly bandwidth</li><li>20 email accounts</li><li>Unlimited subdomens</li></ul>
+                <button>BUY</button>
+            </div>
+        </div>
+        <div class="plan-wrap">
+            <div class="plan professional">
+                <h2>PROFESSIONAL</h2>
+                <p class="price">$29</p>
+                <p class="per">per month</p>
+                <ul><li>5GB disk space</li><li>60GB monthly bandwidth</li><li>10 email accounts</li><li>Unlimited subdomens</li></ul>
+                <button>BUY</button>
+            </div>
+        </div>
+        <div class="plan-wrap">
+            <div class="plan standart">
+                <h2>STANDART</h2>
+                <p class="price">$19</p>
+                <p class="per">per month</p>
+                <ul><li>3GB disk space</li><li>30GB monthly bandwidth</li><li>5 email accounts</li><li>Unlimited subdomens</li></ul>
+                <button>BUY</button>
+            </div>
+        </div>
+        <div class="plan-wrap">
+            <div class="plan basic">
+                <h2>BASIC</h2>
+                <p class="price">$9</p>
+                <p class="per">per month</p>
+                <ul><li>1GB disk space</li><li>10GB monthly bandwidth</li><li>2 email accounts</li><li>Unlimited subdomens</li></ul>
+                <button>BUY</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

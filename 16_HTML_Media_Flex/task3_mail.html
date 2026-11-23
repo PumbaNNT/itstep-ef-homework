@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3 - Поштовий клієнт (адаптивний)</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: #f4f4f4;
+            color: #222;
+            font-family: Segoe UI, Arial, sans-serif;
+            font-size: 19px;
+        }
+
+        /* шапка */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 113px;
+            padding: 0 50px;
+            border-bottom: 1px solid #777;
+        }
+
+        .logo { display: flex; align-items: center; gap: 13px; font-size: 24px; }
+        .logo i {
+            display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: #7cb8d8; font-style: normal; font-size: 26px;
+        }
+
+        .user { display: flex; align-items: center; gap: 13px; font-size: 18px; }
+        .user i {
+            width: 50px; height: 50px; border: 3px solid #555; border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 38%, #d4d7db 0 22%, transparent 23%),
+                radial-gradient(ellipse at 50% 100%, #f2c41f 0 45%, transparent 46%), #fff;
+        }
+
+        .layout {
+            display: flex;
+            gap: 25px;
+            padding: 25px 50px;
+        }
+
+        /* бічне меню */
+        .side { flex: 0 0 250px; }
+        .side ul { margin: 0; padding: 0; list-style: none; }
+        .side a {
+            display: flex; align-items: center; gap: 18px;
+            height: 62px; padding: 0 30px;
+            color: #333; text-decoration: none;
+        }
+        .side a:hover, .side a.active { background: #f4e4e4; }
+        .side .ico { font-size: 28px; width: 30px; text-align: center; }
+
+        /* список листів */
+        .mails { flex: 1; min-width: 0; margin: 0; padding: 0; list-style: none; }
+
+        .mail {
+            display: grid;
+            grid-template-columns: 45px 235px minmax(0, 1fr) 40px 105px;
+            grid-template-areas: "star from text clip date";
+            align-items: center;
+            min-height: 53px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .mail:hover { background: #ebebeb; }
+
+        .star { grid-area: star; text-align: center; color: #555; }
+        .star.on { color: #d9534f; }
+        .from { grid-area: from; }
+        .text { grid-area: text; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .subject { color: #222; }
+        .preview { color: #888; }
+        .preview::before { content: " - "; }
+        .clip { grid-area: clip; text-align: center; color: #777; }
+        .date { grid-area: date; padding-left: 15px; white-space: nowrap; }
+
+        /* 550 - 800 px: лист у три рядки (від / тема / превʼю) */
+        @media (max-width: 800px) {
+            .mail {
+                grid-template-columns: 45px minmax(0, 1fr) 40px 90px;
+                grid-template-areas:
+                    "star from clip date"
+                    ".    text text text";
+                padding: 10px 12px 10px 0;
+            }
+
+            .text { white-space: normal; }
+            .subject { display: block; }
+            .preview {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .preview::before { content: ""; }
+            .date { text-align: right; }
+        }
+
+        /* < 550 px: у меню лише іконки, менші відступи */
+        @media (max-width: 549px) {
+            header { padding: 0 25px 0 50px; }
+            .user { font-size: 17px; }
+            .layout { padding: 25px 50px 25px 50px; gap: 25px; }
+            .side { flex: 0 0 88px; }
+            .side a { justify-content: center; padding: 0; }
+            .side .label { display: none; }
+            .mail { grid-template-columns: 35px minmax(0, 1fr) 35px 75px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><i>✉</i>MY MAIL</div>
+        <div class="user">user@mymail.com <i></i></div>
+    </header>
+
+    <div class="layout">
+        <nav class="side">
+            <ul>
+                <li><a href="#" class="active"><span class="ico">📥</span><span class="label">Incoming</span></a></li>
+                <li><a href="#"><span class="ico">💬</span><span class="label">Outgoing</span></a></li>
+                <li><a href="#"><span class="ico">📝</span><span class="label">Drafts</span></a></li>
+                <li><a href="#"><span class="ico">🐞</span><span class="label">Spam</span></a></li>
+            </ul>
+        </nav>
+
+        <ul class="mails">
+            <li class="mail"><span class="star">☆</span><span class="from">me, Alex</span><span class="text"><span class="subject">Trip to South America</span><span class="preview">Suspendisse ut sapien non arcu rutrum tempor porta at nibh</span></span><span class="clip">📎</span><span class="date">12 apr.</span></li>
+            <li class="mail"><span class="star">☆</span><span class="from">me, John</span><span class="text"><span class="subject">Santa Monica trip</span><span class="preview">Cras accumsan lacus quis urna ultricies, vel finibus nulla</span></span><span class="clip">📎</span><span class="date">12 apr.</span></li>
+            <li class="mail"><span class="star">☆</span><span class="from">me, John, Alex</span><span class="text"><span class="subject">Birthday party</span><span class="preview">20.04.2019</span></span><span class="clip"></span><span class="date">11 apr.</span></li>
+            <li class="mail"><span class="star on">★</span><span class="from">Mari White</span><span class="text"><span class="subject">Report (march 2019)</span></span><span class="clip">📎</span><span class="date">10 apr.</span></li>
+            <li class="mail"><span class="star">☆</span><span class="from">me, Elena</span><span class="text"><span class="subject">Duis semper augue</span><span class="preview">Nunc finibus sem vel odio mattis</span></span><span class="clip">📎</span><span class="date">10 apr.</span></li>
+            <li class="mail"><span class="star">☆</span><span class="from">Bill, John</span><span class="text"><span class="subject">Ut congue purus</span><span class="preview">Ut sit amet eros hendrerit, posuere arcu sed, vehicula leo</span></span><span class="clip"></span><span class="date">5 apr.</span></li>
+            <li class="mail"><span class="star on">★</span><span class="from">Stive</span><span class="text"><span class="subject">Phasellus quis velit tincidunt</span></span><span class="clip"></span><span class="date">1 apr.</span></li>
+            <li class="mail"><span class="star on">★</span><span class="from">Mari White</span><span class="text"><span class="subject">Report (february 2019)</span></span><span class="clip">📎</span><span class="date">10 mar.</span></li>
+        </ul>
+    </div>
+</body>
+</html>
