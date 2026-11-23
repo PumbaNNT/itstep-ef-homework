@@ -11,6 +11,7 @@
 | 12.09.2026 | ASP.NET MVC session (кошик) | [07_MVC_Session_Cart](07_MVC_Session_Cart) |
 | 19.09.2026 | ASP.NET API seeder / repositories | [08_API_Repositories](08_API_Repositories) |
 | 26.09.2026 | ASP.NET API валідація / файли | [09_API_Service_Validation](09_API_Service_Validation) |
+| 21.11.2026 | Python ООП | [10_Python_OOP](10_Python_OOP) |
 
 Стек: .NET 9, EF Core 9, SQL Server LocalDB (`(localdb)\MSSQLLocalDB`), Code First + міграції.
 База даних створюється автоматично при запуску (`Database.Migrate()`).
