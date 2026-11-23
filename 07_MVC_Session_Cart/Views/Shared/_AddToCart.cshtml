@@ -1,0 +1,6 @@
+@model int
+<form asp-controller="Cart" asp-action="Add" method="post" class="d-inline">
+    <input type="hidden" name="productId" value="@Model" />
+    <input type="hidden" name="returnUrl" value="@($"{Context.Request.Path}{Context.Request.QueryString}")" />
+    <button type="submit" class="btn btn-success @(ViewData["BtnClass"] ?? "btn-sm")">До кошика</button>
+</form>

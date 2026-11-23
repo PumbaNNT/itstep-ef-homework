@@ -1,0 +1,55 @@
+﻿@model CatalogViewModel
+@{
+    ViewData["Title"] = "Каталог товарів";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+    <div>
+        <h1 class="fw-bold mb-0">Каталог товарів</h1>
+        <p class="text-muted mb-0">@Model.TotalProducts товарів</p>
+    </div>
+
+    <form method="get" asp-action="Index" class="d-flex align-items-center gap-2">
+        <label for="sort" class="form-label mb-0 text-nowrap">Сортувати:</label>
+        <select id="sort" name="sort" class="form-select" onchange="this.form.submit()">
+            @foreach (var (value, text) in CatalogViewModel.SortOptions)
+            {
+                <option value="@value" selected="@((Model.Sort ?? "") == value)">@text</option>
+            }
+        </select>
+        <noscript><button class="btn btn-primary" type="submit">OK</button></noscript>
+    </form>
+</div>
+
+@if (Model.Sort is null)
+{
+    <nav class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+        @foreach (var c in Model.Categories)
+        {
+            <a class="btn btn-outline-primary btn-sm rounded-pill" href="#cat-@c.Id">@c.Name</a>
+        }
+    </nav>
+
+    @foreach (var category in Model.Categories)
+    {
+        <section id="cat-@category.Id" class="mb-5">
+            <h2 class="h4 border-bottom pb-2 mb-3">@category.Name</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                @foreach (var p in category.Products.OrderBy(p => p.Id))
+                {
+                    p.Category = category;
+                    <partial name="_ProductCard" model="p" />
+                }
+            </div>
+        </section>
+    }
+}
+else
+{
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 mb-5">
+        @foreach (var p in Model.SortedProducts)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+}

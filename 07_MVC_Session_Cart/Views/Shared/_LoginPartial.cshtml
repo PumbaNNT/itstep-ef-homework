@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <span class="nav-link text-dark">
+                @User.Identity?.Name
+                @if (User.IsInRole(Roles.Admin))
+                {
+                    <span class="badge bg-danger ms-1">Admin</span>
+                }
+            </span>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" class="nav-link btn btn-link text-dark">Вийти</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a></li>
+    }
+</ul>

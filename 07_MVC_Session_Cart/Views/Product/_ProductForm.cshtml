@@ -1,0 +1,59 @@
+@model ProductFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="Id" />
+
+<div class="row g-3">
+    <div class="col-md-8">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <label asp-for="Amount" class="form-label"></label>
+                <input asp-for="Amount" class="form-control" type="number" min="0" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <label asp-for="Rating" class="form-label"></label>
+                <input asp-for="Rating" class="form-control" type="number" step="0.1" min="1" max="5" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <label asp-for="CategoryId" class="form-label"></label>
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
+                    <option value="0">-- оберіть --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="ImageFile" class="form-label"></label>
+        <div class="mb-2"><partial name="_ProductImage" model="Model.CurrentImage" /></div>
+        <input asp-for="ImageFile" type="file" accept="image/*" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+        @if (!string.IsNullOrEmpty(Model.CurrentImage))
+        {
+            <div class="form-check mt-2">
+                <input asp-for="RemoveImage" class="form-check-input" />
+                <label asp-for="RemoveImage" class="form-check-label"></label>
+            </div>
+            <input type="hidden" asp-for="CurrentImage" />
+        }
+        <div class="form-text">jpg, png, webp, gif - до 5 МБ. Нове фото замінить попереднє.</div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+@model string?
+@if (string.IsNullOrEmpty(Model))
+{
+    <div class="bg-light text-muted d-flex align-items-center justify-content-center rounded small" style="aspect-ratio:3/2">Без фото</div>
+}
+else
+{
+    <img src="@Model" alt="Фото товару" class="img-fluid rounded" style="aspect-ratio:3/2;object-fit:cover" />
+}

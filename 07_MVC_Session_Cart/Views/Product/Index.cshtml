@@ -1,0 +1,52 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Товари";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Товари (@Model.Count)</h1>
+    <a asp-action="Create" class="btn btn-success">+ Додати товар</a>
+</div>
+
+@if (TempData["Message"] is string message)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрити"></button>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Фото</th>
+                <th>Назва</th>
+                <th>Категорія</th>
+                <th class="text-end">Ціна</th>
+                <th class="text-end">Рейтинг</th>
+                <th class="text-end">К-сть</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td style="width:90px">
+                        <partial name="_ProductImage" model="p.Image" />
+                    </td>
+                    <td>@p.Name</td>
+                    <td>@p.Category?.Name</td>
+                    <td class="text-end">@p.Price.ToString("N0") ₴</td>
+                    <td class="text-end">@p.Rating.ToString("0.0")</td>
+                    <td class="text-end">@p.Amount</td>
+                    <td class="text-end text-nowrap">
+                        <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-outline-primary">Редагувати</a>
+                        <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-outline-danger">Видалити</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
