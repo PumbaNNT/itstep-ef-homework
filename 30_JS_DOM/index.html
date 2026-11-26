@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intro to DOM — список продуктів</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        /* картки фіксованої ширини, при зміні ширини вікна переносяться на новий рядок */
+        #products { display: flex; flex-wrap: wrap; gap: 16px; }
+        .product-card { width: 220px; }
+        .product-card .emoji { font-size: 64px; text-align: center; padding: 16px 0 0; }
+    </style>
+</head>
+<body class="bg-light">
+<div class="container py-4">
+    <h1 class="mb-4">Список продуктів</h1>
+
+    <div class="mb-4 d-flex gap-2 flex-wrap">
+        <button class="btn btn-primary" id="addFish">+ Fish</button>
+        <button class="btn btn-success" id="addApple">+ Apple</button>
+        <button class="btn btn-warning" id="addEggs">+ Eggs</button>
+    </div>
+
+    <div id="products"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

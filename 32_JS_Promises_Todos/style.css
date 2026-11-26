@@ -1,0 +1,15 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #f3f5f9; color: #222; }
+h1 { text-align: center; }
+.layout { display: grid; grid-template-columns: 300px 1fr; gap: 20px; max-width: 1000px; margin: 0 auto; }
+aside, section { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, .08); }
+h2 { margin-top: 0; font-size: 20px; }
+ul { list-style: none; padding: 0; margin: 0; }
+#users li { padding: 10px; border-radius: 6px; cursor: pointer; }
+#users li:hover { background: #eef2ff; }
+#users li.active { background: #4f46e5; color: #fff; }
+#users li small { display: block; opacity: .7; }
+#todos li { padding: 8px 10px; border-bottom: 1px solid #eee; display: flex; gap: 10px; }
+#todos li.done span { text-decoration: line-through; color: #888; }
+.badge { min-width: 22px; text-align: center; }
+@media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
